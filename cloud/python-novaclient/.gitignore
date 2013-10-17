@@ -1,0 +1,15 @@
+.coverage
+.venv
+.tox
+*,cover
+cover
+*.pyc
+.idea
+*.swp
+*~
+build
+dist
+python_novaclient.egg-info
+AUTHORS
+ChangeLog
+novaclient/versioninfo

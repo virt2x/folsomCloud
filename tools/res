@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    echo "There must be one parameters"
+    exit 0
+fi
+
+if [[ $# -gt 1 ]]; then 
+    echo "There must be just one parameters: such as /root/res nova-api"
+    exit 0
+fi
+
+set -e
+set -o xtrace
+chmod a+w /opt/stack/nova/networks
+
+rm -rf /opt/stack/nova/`hostname`*
+rm -rf /opt/stack/nova/*.lock
+
+ps  aux | grep -v "grep" | grep -v "res"| grep "$1" | awk '{print $2}' | xargs -i kill -9 {} ;
+rm -rfv /var/log/nova/$1.log >/dev/null
+virsh list --all
+
+if [[ $1 =~ (novnc) ]]; then
+    nowdir=`pwd`
+    cd /opt/stack/noVNC
+    nohup python ./utils/nova-novncproxy --config-file /etc/nova/nova.conf  --web .>/var/log/nova/nova-novnc.log 2>&1 &
+    cd $nowdir
+    exit
+fi
+nohup python /opt/stack/nova/bin/$1 --flagfile=/etc/nova/nova.conf --logfile=/var/log/nova/$1.log>/dev/null 2>&1 &
+set +o xtrace

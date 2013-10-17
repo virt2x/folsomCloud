@@ -1,0 +1,15 @@
+*.log
+*.log.*
+*.pyc
+*.swp
+*~
+.openstackclient-venv
+.venv
+AUTHORS
+build
+dist
+python_openstackclient.egg-info
+.tox/
+ChangeLog
+TAGS
+openstackclient/versioninfo

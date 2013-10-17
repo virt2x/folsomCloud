@@ -1,0 +1,15 @@
+*.pyc
+*.DS_Store
+AUTHORS
+build/*
+build-stamp
+doc/build
+quantum.egg-info/
+run_tests.err.log
+run_tests.log
+.quantum-venv/
+.venv/
+quantum/vcsversion.py
+requirements.txt
+ChangeLog
+.tox/

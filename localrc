@@ -1,0 +1,84 @@
+#---------------------------------------------
+# Set up Env.
+#---------------------------------------------
+
+MYSQL_ROOT_PASSWORD=mysqlpassword
+
+#---------------------------------------------
+# Keystone MySQL setttings.
+#---------------------------------------------
+
+MYSQL_HOST=10.239.32.6
+MYSQL_KEYSTONE_USER=keystone
+MYSQL_KEYSTONE_PASSWORD=keystone_password
+
+
+#---------------------------------------------
+# Keystone Auth
+#---------------------------------------------
+
+KEYSTONE_HOST=10.239.32.35
+ADMIN_PASSWORD=admin_user_password
+ADMIN_TOKEN=admin_token
+SERVICE_TOKEN=$ADMIN_TOKEN
+ADMIN_USER=admin
+SERVICE_TENANT_NAME=service
+#---------------------------------------------
+# RabbitMQ Service
+#---------------------------------------------
+
+RABBITMQ_HOST=10.239.32.50
+RABBITMQ_USER=guest
+RABBITMQ_PASSWORD=rabbit_password
+
+#---------------------------------------------
+# Glance Service
+#---------------------------------------------
+
+GLANCE_HOST=10.239.32.120
+MYSQL_GLANCE_USER=glance
+MYSQL_GLANCE_PASSWORD=glance_password
+KEYSTONE_GLANCE_SERVICE_PASSWORD=keystone_glance_password
+
+
+#---------------------------------------------
+# Quantum Service
+#---------------------------------------------
+
+QUANTUM_HOST=10.239.32.131
+MYSQL_QUANTUM_USER=quantum
+MYSQL_QUANTUM_PASSWORD=quantum_password
+KEYSTONE_QUANTUM_SERVICE_PASSWORD=keystone_quantum_password
+
+
+#---------------------------------------------
+# Nova Service
+#---------------------------------------------
+
+NOVA_HOST=10.239.32.19
+MYSQL_NOVA_USER=nova
+MYSQL_NOVA_PASSWORD=nova_password
+KEYSTONE_NOVA_SERVICE_PASSWORD=keystone_nova_password
+LIBVIRT_TYPE=qemu
+
+
+#---------------------------------------------
+# Cinder Service
+#---------------------------------------------
+
+CINDER_HOST=10.239.32.45
+MYSQL_CINDER_USER=cinder
+MYSQL_CINDER_PASSWORD=cinder_password
+KEYSTONE_CINDER_SERVICE_PASSWORD=keystone_cinder_password
+VOLUME_GROUP=cinder-volumes
+
+#---------------------------------------------
+# Dashboard Service
+#---------------------------------------------
+
+
+DASHBOARD_HOST=10.239.32.34
+MYSQL_DASHBOARD_USER=dashboard
+MYSQL_DASHBOARD_PASSWORD=dashboard_password
+
+

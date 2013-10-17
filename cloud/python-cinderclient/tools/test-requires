@@ -1,0 +1,10 @@
+
+distribute>=0.6.24
+mock
+nose
+nosexcover
+openstack.nose_plugin
+nosehtmloutput
+pep8==1.2
+sphinx>=1.1.2
+unittest2
