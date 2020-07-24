@@ -1203,7 +1203,7 @@ class LinuxBridgeInterfaceDriver(LinuxNetInterfaceDriver):
                          run_as_root=True)
 
             if (err and err != "device %s is already a member of a bridge;"
-                     "can't enslave it to bridge %s.\n" % (interface, bridge)):
+                     "can't ensubordinate it to bridge %s.\n" % (interface, bridge)):
                 msg = _('Failed to add interface: %s') % err
                 raise exception.NovaException(msg)
 

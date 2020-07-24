@@ -5181,33 +5181,33 @@ class ComputeAggrTestCase(BaseTestCase):
                 aggregate=jsonutils.to_primitive(self.aggr), host="host")
         self.assertTrue(fake_driver_remove_from_aggregate.called)
 
-    def test_add_aggregate_host_passes_slave_info_to_driver(self):
+    def test_add_aggregate_host_passes_subordinate_info_to_driver(self):
         def driver_add_to_aggregate(context, aggregate, host, **kwargs):
             self.assertEquals(self.context, context)
             self.assertEquals(aggregate['id'], self.aggr.id)
             self.assertEquals(host, "the_host")
-            self.assertEquals("SLAVE_INFO", kwargs.get("slave_info"))
+            self.assertEquals("SLAVE_INFO", kwargs.get("subordinate_info"))
 
         self.stubs.Set(self.compute.driver, "add_to_aggregate",
                        driver_add_to_aggregate)
 
         self.compute.add_aggregate_host(self.context, "the_host",
-                slave_info="SLAVE_INFO",
+                subordinate_info="SLAVE_INFO",
                 aggregate=jsonutils.to_primitive(self.aggr))
 
-    def test_remove_from_aggregate_passes_slave_info_to_driver(self):
+    def test_remove_from_aggregate_passes_subordinate_info_to_driver(self):
         def driver_remove_from_aggregate(context, aggregate, host, **kwargs):
             self.assertEquals(self.context, context)
             self.assertEquals(aggregate['id'], self.aggr.id)
             self.assertEquals(host, "the_host")
-            self.assertEquals("SLAVE_INFO", kwargs.get("slave_info"))
+            self.assertEquals("SLAVE_INFO", kwargs.get("subordinate_info"))
 
         self.stubs.Set(self.compute.driver, "remove_from_aggregate",
                        driver_remove_from_aggregate)
 
         self.compute.remove_aggregate_host(self.context,
                 aggregate=jsonutils.to_primitive(self.aggr), host="the_host",
-                slave_info="SLAVE_INFO")
+                subordinate_info="SLAVE_INFO")
 
 
 class ComputePolicyTestCase(BaseTestCase):

@@ -451,7 +451,7 @@ def once_git_check_commit_title():
         raise Exception("git log failed with code %s" % subp.returncode)
 
     #From https://github.com/openstack/openstack-ci-puppet
-    #       /blob/master/modules/gerrit/manifests/init.pp#L74
+    #       /blob/main/modules/gerrit/manifests/init.pp#L74
     #Changeid|bug|blueprint
     git_keywords = (r'(I[0-9a-f]{8,40})|'
                     '([Bb]ug|[Ll][Pp])[\s\#:]*(\d+)|'

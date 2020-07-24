@@ -50,7 +50,7 @@ class PluginV2(db_base_plugin_v2.QuantumDbPluginV2):
                             'create_subnet', 'create_subnet_bulk',
                             'delete_subnet', 'update_subnet',
                             'get_subnet', 'get_subnets', ]
-    _master = True
+    _main = True
 
     def __init__(self):
         """
@@ -58,7 +58,7 @@ class PluginV2(db_base_plugin_v2.QuantumDbPluginV2):
         """
         self._model = importutils.import_object(conf.MODEL_CLASS)
         if hasattr(self._model, "MANAGE_STATE") and self._model.MANAGE_STATE:
-            self._master = False
+            self._main = False
             LOG.debug("Model %s manages state" % conf.MODEL_CLASS)
             native_bulk_attr_name = ("_%s__native_bulk_support"
                                      % self._model.__class__.__name__)
@@ -77,9 +77,9 @@ class PluginV2(db_base_plugin_v2.QuantumDbPluginV2):
         When the configured model class offers to manage the state of the
         logical resources, we delegate the core API calls directly to it.
         """
-        master = object.__getattribute__(self, "_master")
+        main = object.__getattribute__(self, "_main")
         methods = object.__getattribute__(self, "_methods_to_delegate")
-        if not master and name in methods:
+        if not main and name in methods:
             return getattr(object.__getattribute__(self, "_model"),
                            name)
         else:
