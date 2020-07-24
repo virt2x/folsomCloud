@@ -789,9 +789,9 @@ class KeystoneClientTests(object):
         # TODO(ja): determine what else todo
 
 
-class KcMasterTestCase(CompatTestCase, KeystoneClientTests):
+class KcMainTestCase(CompatTestCase, KeystoneClientTests):
     def get_checkout(self):
-        return KEYSTONECLIENT_REPO, 'master'
+        return KEYSTONECLIENT_REPO, 'main'
 
     def test_tenant_add_and_remove_user(self):
         client = self.get_client(admin=True)

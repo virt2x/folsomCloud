@@ -128,7 +128,7 @@ class ComputeAPI(nova.openstack.common.rpc.proxy.RpcProxy):
 
         2.0 - Remove 1.x backwards compat
         2.1 - Adds orig_sys_metadata to rebuild_instance()
-        2.2 - Adds slave_info parameter to add_aggregate_host() and
+        2.2 - Adds subordinate_info parameter to add_aggregate_host() and
               remove_aggregate_host()
         2.3 - Adds volume_id to reserve_block_device_name()
         2.4 - Add bdms to terminate_instance
@@ -162,7 +162,7 @@ class ComputeAPI(nova.openstack.common.rpc.proxy.RpcProxy):
                 default_version=self.BASE_RPC_API_VERSION)
 
     def add_aggregate_host(self, ctxt, aggregate, host_param, host,
-                           slave_info=None):
+                           subordinate_info=None):
         '''Add aggregate host.
 
         :param ctxt: request context
@@ -175,7 +175,7 @@ class ComputeAPI(nova.openstack.common.rpc.proxy.RpcProxy):
         aggregate_p = jsonutils.to_primitive(aggregate)
         self.cast(ctxt, self.make_msg('add_aggregate_host',
                 aggregate=aggregate_p, host=host_param,
-                slave_info=slave_info),
+                subordinate_info=subordinate_info),
                 topic=_compute_topic(self.topic, ctxt, host, None),
                 version='2.14')
 
@@ -392,7 +392,7 @@ class ComputeAPI(nova.openstack.common.rpc.proxy.RpcProxy):
                 _compute_topic(self.topic, ctxt, host, None))
 
     def remove_aggregate_host(self, ctxt, aggregate, host_param, host,
-                              slave_info=None):
+                              subordinate_info=None):
         '''Remove aggregate host.
 
         :param ctxt: request context
@@ -405,7 +405,7 @@ class ComputeAPI(nova.openstack.common.rpc.proxy.RpcProxy):
         aggregate_p = jsonutils.to_primitive(aggregate)
         self.cast(ctxt, self.make_msg('remove_aggregate_host',
                 aggregate=aggregate_p, host=host_param,
-                slave_info=slave_info),
+                subordinate_info=subordinate_info),
                 topic=_compute_topic(self.topic, ctxt, host, None),
                 version='2.15')
 

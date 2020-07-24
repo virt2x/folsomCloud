@@ -51,7 +51,7 @@ class ExtendedSnapshotAttributesController(wsgi.Controller):
     def show(self, req, resp_obj, id):
         context = req.environ['cinder.context']
         if authorize(context):
-            # Attach our slave template to the response object
+            # Attach our subordinate template to the response object
             resp_obj.attach(xml=ExtendedSnapshotAttributeTemplate())
 
             try:
@@ -66,7 +66,7 @@ class ExtendedSnapshotAttributesController(wsgi.Controller):
     def detail(self, req, resp_obj):
         context = req.environ['cinder.context']
         if authorize(context):
-            # Attach our slave template to the response object
+            # Attach our subordinate template to the response object
             resp_obj.attach(xml=ExtendedSnapshotAttributesTemplate())
 
             snapshots = list(resp_obj.obj.get('snapshots', []))
@@ -110,7 +110,7 @@ class ExtendedSnapshotAttributeTemplate(xmlutil.TemplateBuilder):
         make_snapshot(root)
         alias = Extended_snapshot_attributes.alias
         namespace = Extended_snapshot_attributes.namespace
-        return xmlutil.SlaveTemplate(root, 1, nsmap={alias: namespace})
+        return xmlutil.SubordinateTemplate(root, 1, nsmap={alias: namespace})
 
 
 class ExtendedSnapshotAttributesTemplate(xmlutil.TemplateBuilder):
@@ -121,4 +121,4 @@ class ExtendedSnapshotAttributesTemplate(xmlutil.TemplateBuilder):
         make_snapshot(elem)
         alias = Extended_snapshot_attributes.alias
         namespace = Extended_snapshot_attributes.namespace
-        return xmlutil.SlaveTemplate(root, 1, nsmap={alias: namespace})
+        return xmlutil.SubordinateTemplate(root, 1, nsmap={alias: namespace})

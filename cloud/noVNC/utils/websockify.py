@@ -148,7 +148,7 @@ Traffic Legend:
                     self.run_wrap_cmd()
 
     #
-    # Routines above this point are run in the master listener
+    # Routines above this point are run in the main listener
     # process.
     #
 

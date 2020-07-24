@@ -97,7 +97,7 @@ class ComputeRpcAPITestCase(test.TestCase):
     def test_add_aggregate_host(self):
         self._test_compute_api('add_aggregate_host', 'cast',
                 aggregate={'id': 'fake_id'}, host_param='host', host='host',
-                slave_info={}, version='2.14')
+                subordinate_info={}, version='2.14')
 
     def test_add_fixed_ip_to_instance(self):
         self._test_compute_api('add_fixed_ip_to_instance', 'cast',
@@ -265,7 +265,7 @@ class ComputeRpcAPITestCase(test.TestCase):
     def test_remove_aggregate_host(self):
         self._test_compute_api('remove_aggregate_host', 'cast',
                 aggregate={'id': 'fake_id'}, host_param='host', host='host',
-                slave_info={}, version='2.15')
+                subordinate_info={}, version='2.15')
 
     def test_remove_fixed_ip_from_instance(self):
         self._test_compute_api('remove_fixed_ip_from_instance', 'cast',

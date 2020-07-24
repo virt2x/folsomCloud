@@ -51,7 +51,7 @@ class CiscoNetworkPluginV2TestCase(test_db_plugin.QuantumDbPluginV2TestCase):
 
     def _get_plugin_ref(self):
         plugin_obj = QuantumManager.get_plugin()
-        if getattr(plugin_obj, "_master"):
+        if getattr(plugin_obj, "_main"):
             plugin_ref = plugin_obj
         else:
             plugin_ref = getattr(plugin_obj, "_model").\
